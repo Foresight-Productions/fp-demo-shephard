@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design System
+    Style: Trust & Authority
+    Archetype: Bold Poster
+    Fonts: Poppins (700–900) / Open Sans (body)
+    Palette: primary #1B3D7B | accent #F97316 | bg #0F1E3D | surface #F5F0E5
+    Anti-patterns avoided: AI purple/pink gradients, hidden credentials, serif fonts,
+      rounded cards without thick border, 3-card testimonial grid, numbered row services
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shephard Plumbing, LLC | Yakima &amp; Tri-Cities Licensed Plumbers</title>
+  <meta name="description" content="Shephard Plumbing, LLC — Yakima Valley's trusted plumbers since 2014. Water heaters, drain cleaning, sewer services, remodeling &amp; more. 4.8-star rated, 631+ reviews. Call (509) 642-4108.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://foresight-productions.github.io/fp-demo-shephard/">
+  <meta property="og:title" content="Shephard Plumbing, LLC | Yakima's Trusted Plumber Since 2014">
+  <meta property="og:description" content="Licensed plumbers serving Yakima Valley and Tri-Cities since 2014. Water heaters, drain cleaning, sewer services, pipe repair &amp; remodeling. 4.8 stars, 631+ reviews.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&h=630&fit=crop&auto=format">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Professional plumber working on pipes for Shephard Plumbing LLC in Yakima WA">
+  <meta property="og:site_name" content="Shephard Plumbing, LLC">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shephard Plumbing, LLC | Yakima's Trusted Plumber Since 2014">
+  <meta name="twitter:description" content="Licensed plumbers serving Yakima Valley and Tri-Cities since 2014. 4.8 stars, 631+ reviews.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&h=630&fit=crop&auto=format">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---- Reset & Base ---- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:      #1B3D7B;
+      --primary-dark: #0F2755;
+      --accent:       #F97316;
+      --accent-dark:  #EA6A0A;
+      --text:         #FFFFFF;
+      --text-muted:   rgba(255,255,255,0.68);
+      --text-dark:    #1A1A1A;
+      --text-dm:      #555;
+      --bg:           #0F1E3D;
+      --bg-mid:       #162C5A;
+      --bg-subtle:    #F4EFE6;
+      --surface:      #1C3260;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; }
+    h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.05; }
+    a { cursor: pointer; }
+
+    /* ---- NAV (ONLY #nav — never bare nav{}) ---- */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 68px;
+      background: rgba(15,30,61,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: box-shadow 0.3s ease;
+    }
+    #nav.scrolled { box-shadow: 0 4px 28px rgba(0,0,0,0.4); }
+
+    .nav-logo-img { height: 36px; object-fit: contain; display: block; }
+    .nav-logo-fallback {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: white;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+      display: none;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      list-style: none;
+      flex-shrink: 0;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent) !important;
+      color: white !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 3px;
+    }
+    .nav-cta:hover { background: var(--accent-dark) !important; }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 6px;
+      flex-shrink: 0;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-toggle span {
+      width: 24px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s;
+      display: block;
+    }
+
+    /* Mobile overlay */
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .nav-overlay.open { display: flex; }
+    .nav-overlay a {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 2.2rem;
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-overlay a:hover { color: var(--accent); }
+    .overlay-close {
+      position: absolute;
+      top: 1.5rem; right: 5%;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 2.4rem;
+      cursor: pointer;
+      line-height: 1;
+      min-height: 44px;
+      min-width: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ---- HERO — Bold Poster: NO image, giant typography ---- */
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      background: var(--bg);
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 100px 5% 9rem;
+      overflow: hidden;
+      clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);
+    }
+
+    .hero-geo-1 {
+      position: absolute;
+      bottom: -8%;
+      right: -4%;
+      width: clamp(280px,42vw,560px);
+      height: clamp(280px,42vw,560px);
+      background: var(--accent);
+      opacity: 0.10;
+      clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+      pointer-events: none;
+    }
+    .hero-geo-2 {
+      position: absolute;
+      top: 14%;
+      right: 7%;
+      width: clamp(80px,12vw,160px);
+      height: clamp(80px,12vw,160px);
+      background: var(--accent);
+      opacity: 0.20;
+      clip-path: polygon(0 0,100% 0,100% 100%);
+      pointer-events: none;
+    }
+    .hero-geo-3 {
+      position: absolute;
+      left: 3%;
+      top: 30%;
+      width: 4px;
+      height: clamp(100px,18vh,220px);
+      background: var(--accent);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    .hero-geo-4 {
+      position: absolute;
+      bottom: 22%;
+      right: 22%;
+      width: clamp(40px,6vw,80px);
+      height: clamp(40px,6vw,80px);
+      border: 3px solid var(--accent);
+      opacity: 0.20;
+      transform: rotate(45deg);
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 960px; }
+
+    .hero-eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: clamp(0.65rem,1.1vw,0.8rem);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+    .hero-headline {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: clamp(4.5rem,13vw,10.5rem);
+      line-height: 0.9;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+      color: white;
+      margin-bottom: 1.8rem;
+    }
+    .hero-headline .hl-accent { color: var(--accent); display: block; }
+    .hero-sub {
+      font-size: clamp(0.95rem,1.4vw,1.15rem);
+      color: var(--text-muted);
+      max-width: 500px;
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      padding: 1rem 1.8rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.18s, transform 0.15s;
+      min-height: 52px;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      padding: 1rem 1.8rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: border-color 0.18s, background 0.18s;
+      min-height: 52px;
+    }
+    .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.06); }
+
+    /* ---- PROOF BAR ---- */
+    .proof-bar {
+      background: var(--bg-subtle);
+      padding: 1.4rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text-dark);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: clamp(0.78rem,1.2vw,0.92rem);
+    }
+    .proof-stars { color: #F59E0B; letter-spacing: 1px; }
+    .proof-sep { width: 1px; height: 26px; background: rgba(0,0,0,0.18); }
+
+    /* ---- SECTION SHARED ---- */
+    .section-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem,4vw,3.2rem);
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+      margin-bottom: 3rem;
+      color: white;
+    }
+    .section-title.dark { color: var(--text-dark); }
+
+    /* ---- SERVICES — 2-col block cards, 4px left border ---- */
+    .services {
+      background: var(--bg);
+      padding: 7rem 5%;
+      clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%);
+    }
+    .services-inner { max-width: 1200px; margin: 0 auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+    }
+    .service-card {
+      background: var(--bg-mid);
+      border-left: 4px solid var(--accent);
+      padding: 1.8rem 1.6rem;
+      display: flex;
+      gap: 1.4rem;
+      align-items: flex-start;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(249,115,22,0.18);
+    }
+    .service-card:nth-child(3n+2) { border-left-color: #60A5FA; }
+    .service-card:nth-child(3n+3) { border-left-color: #34D399; }
+    .service-icon { flex-shrink: 0; width: 52px; height: 52px; }
+    .svc-name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: white;
+      margin-bottom: 0.45rem;
+    }
+    .svc-desc {
+      font-size: 0.855rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ---- ABOUT — Stats-first (right), photo left ---- */
+    .about {
+      background: var(--bg-subtle);
+      padding: 7rem 5%;
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about-img-wrap { position: relative; }
+    .about-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border: 4px solid var(--primary);
+      display: block;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--accent);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.9rem 1.1rem;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .about-badge strong { font-size: 1.7rem; display: block; letter-spacing: -0.02em; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .stat-number {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem,5.5vw,5rem);
+      line-height: 1;
+      color: var(--primary);
+      letter-spacing: -0.04em;
+    }
+    .stat-suffix {
+      font-size: 0.48em;
+      font-weight: 700;
+      vertical-align: super;
+      color: var(--accent);
+    }
+    .stat-label {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dm);
+      margin-top: 0.2rem;
+    }
+
+    .about-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .about-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+    .chk { flex-shrink: 0; margin-top: 2px; }
+
+    /* ---- TESTIMONIALS — Bold Poster: 2 oversized pull quotes, NO card grid ---- */
+    .testimonials {
+      background: var(--bg);
+      padding: 7rem 5%;
+      clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%);
+    }
+    .testimonials-inner { max-width: 1000px; margin: 0 auto; }
+
+    .pull-quotes { display: flex; flex-direction: column; gap: 4rem; margin-top: 3rem; }
+    .pull-quote { position: relative; padding-left: 4.5rem; }
+    .pq-mark {
+      position: absolute;
+      left: 0;
+      top: -1.8rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: clamp(5.5rem,9vw,8rem);
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.85;
+      user-select: none;
+    }
+    .pq-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.2rem,2.2vw,1.75rem);
+      line-height: 1.35;
+      color: white;
+      margin-bottom: 1.2rem;
+    }
+    .pq-author {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .pq-author .stars { color: #F59E0B; margin-right: 0.4rem; }
+    .pq-divider { width: 100%; height: 1px; background: rgba(255,255,255,0.07); }
+
+    /* ---- CTA BANNER ---- */
+    .cta-banner {
+      background: var(--accent);
+      padding: 5rem 5%;
+      text-align: center;
+    }
+    .cta-banner h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.7rem,3.5vw,2.8rem);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: white;
+      margin-bottom: 0.6rem;
+    }
+    .cta-banner p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 2rem; }
+    .btn-dark {
+      background: var(--bg);
+      color: white;
+      padding: 1rem 2.4rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.18s;
+      min-height: 52px;
+    }
+    .btn-dark:hover { background: var(--primary); }
+
+    /* ---- CONTACT ---- */
+    .contact {
+      background: var(--bg-subtle);
+      padding: 6rem 5%;
+    }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .contact-phone {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.7rem,2.8vw,2.6rem);
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: block;
+      margin: 0.8rem 0 2rem;
+      transition: color 0.2s;
+    }
+    .contact-phone:hover { color: var(--accent); }
+    .hours-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .hours-list li {
+      font-size: 0.88rem;
+      color: var(--text-dm);
+      display: flex;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.09);
+    }
+    .hours-list li strong { color: var(--text-dark); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dm);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 0.8rem 1rem;
+      background: white;
+      border: 2px solid rgba(0,0,0,0.12);
+      color: var(--text-dark);
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.92rem;
+      border-radius: 3px;
+      width: 100%;
+      min-height: 44px;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { outline: none; border-color: var(--primary); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ---- FOOTER ---- */
+    .footer {
+      background: #07101F;
+      padding: 2.8rem 5%;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-brand {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 1rem;
+      color: white;
+    }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.83rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { font-size: 0.78rem; }
+
+    /* ---- ANIMATIONS ---- */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .fade-up { opacity: 1; transform: none; }
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+
+      .hero { padding: 88px 1.2rem 8rem; clip-path: none; }
+      .hero-btns { flex-direction: column; align-items: stretch; }
+      .hero-btns .btn-primary,
+      .hero-btns .btn-outline { width: 100%; max-width: 300px; justify-content: center; }
+
+      .proof-sep { display: none; }
+
+      .about-img-wrap { padding-bottom: 2.5rem; }
+      .about-badge { bottom: 0; right: 0.5rem; }
+
+      .cta-banner { padding: 3.5rem 1.2rem; }
+
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+
+      .pull-quote { padding-left: 3rem; }
+      .pq-mark { font-size: 4.5rem; }
+    }
+
+    @media (max-width: 400px) {
+      .about-stats { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <a href="#home" aria-label="Shephard Plumbing home page">
+    <img
+      src="https://shephardplumbingwa.com/wp-content/uploads/2023/06/FinalLogo-jpg.webp"
+      alt="Shephard Plumbing LLC"
+      class="nav-logo-img"
+      id="navLogoImg"
+    >
+    <span class="nav-logo-fallback" id="navLogoFallback">SHEPHARD PLUMBING</span>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Open navigation menu" id="navToggle">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <button class="overlay-close" id="overlayClose" aria-label="Close menu">&times;</button>
+  <a href="#services" class="ol-link">Services</a>
+  <a href="#about" class="ol-link">About</a>
+  <a href="#reviews" class="ol-link">Reviews</a>
+  <a href="#contact" class="ol-link" style="color:var(--accent)">Get a Quote</a>
+</div>
+
+<!-- HERO — Bold Poster: NO image, typography only -->
+<section class="hero" id="home" aria-label="Hero">
+  <div class="hero-geo-1" aria-hidden="true"></div>
+  <div class="hero-geo-2" aria-hidden="true"></div>
+  <div class="hero-geo-3" aria-hidden="true"></div>
+  <div class="hero-geo-4" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Yakima Valley &amp; Tri-Cities, WA &mdash; Licensed &amp; Insured</p>
+    <h1 class="hero-headline">
+      YAKIMA'S
+      <span class="hl-accent">TRUSTED</span>
+      PLUMBER.
+    </h1>
+    <p class="hero-sub">
+      From leaking pipes to full remodels, Shephard Plumbing takes every job,
+      regardless of size. Serving the Yakima Valley and Tri-Cities since 2014.
+    </p>
+    <div class="hero-btns">
+      <a href="tel:5096424108" class="btn-primary">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        Call (509) 642-4108
+      </a>
+      <a href="#services" class="btn-outline">
+        View Services
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<div class="proof-bar" role="region" aria-label="Social proof highlights">
+  <div class="proof-item">
+    <span class="proof-stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+    <span>4.8-Star Rating</span>
+  </div>
+  <div class="proof-sep" aria-hidden="true"></div>
+  <div class="proof-item">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+    <span>631+ Verified Reviews</span>
+  </div>
+  <div class="proof-sep" aria-hidden="true"></div>
+  <div class="proof-item">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    <span>HomeAdvisor Certified</span>
+  </div>
+  <div class="proof-sep" aria-hidden="true"></div>
+  <div class="proof-item">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <span>Yakima Valley &amp; Tri-Cities</span>
+  </div>
+</div>
+
+<!-- SERVICES — 2-col block cards with 4px left border -->
+<section class="services" id="services" aria-labelledby="svc-heading">
+  <div class="services-inner">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title" id="svc-heading">PLUMBING SERVICES</h2>
+
+    <div class="services-grid">
+
+      <div class="service-card fade-up">
+        <svg class="service-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="14" y="8" width="28" height="38" rx="3" stroke="#F97316" stroke-width="2.5" fill="#F97316" fill-opacity="0.1"/>
+          <line x1="28" y1="2" x2="28" y2="8" stroke="#F97316" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="20" y1="46" x2="20" y2="52" stroke="#F97316" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="46" x2="36" y2="52" stroke="#F97316" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="28" cy="26" r="7" stroke="#F97316" stroke-width="2"/>
+          <path d="M28 21 Q31 24 28 27 Q25 30 28 33" stroke="#F97316" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div>
+          <div class="svc-name">Water Heater Services</div>
+          <p class="svc-desc">Installation, repair, and replacement of tank and tankless water heaters. We handle all brands and keep hot water flowing in your home or business.</p>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <svg class="service-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="28" cy="22" r="13" stroke="#60A5FA" stroke-width="2.5" fill="#60A5FA" fill-opacity="0.1"/>
+          <circle cx="28" cy="22" r="5" stroke="#60A5FA" stroke-width="2"/>
+          <line x1="28" y1="35" x2="28" y2="50" stroke="#60A5FA" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="20" y1="46" x2="36" y2="46" stroke="#60A5FA" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="svc-name">Drain Cleaning</div>
+          <p class="svc-desc">Slow drains and blockages cleared fast with professional equipment. Kitchen, bathroom, and floor drains — we clear them all without damaging your pipes.</p>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <svg class="service-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="6" y="24" width="44" height="8" rx="4" stroke="#34D399" stroke-width="2.5" fill="#34D399" fill-opacity="0.1"/>
+          <path d="M40 20 L46 12" stroke="#34D399" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M46 12 L52 12" stroke="#34D399" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M16 32 L10 42" stroke="#34D399" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="36" cy="28" r="3" fill="#34D399"/>
+        </svg>
+        <div>
+          <div class="svc-name">Sewer Services</div>
+          <p class="svc-desc">Full sewer line inspection, cleaning, repair, and replacement. We diagnose problems accurately with video inspection before any digging begins.</p>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <svg class="service-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 28 Q8 18 18 18 L38 18 Q48 18 48 28" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <rect x="20" y="13" width="16" height="10" rx="2" stroke="#F97316" stroke-width="2" fill="#F97316" fill-opacity="0.12"/>
+          <line x1="8" y1="28" x2="8" y2="40" stroke="#F97316" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="48" y1="28" x2="48" y2="40" stroke="#F97316" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="4" y="38" width="8" height="6" rx="1" fill="#F97316" opacity="0.7"/>
+          <rect x="44" y="38" width="8" height="6" rx="1" fill="#F97316" opacity="0.7"/>
+        </svg>
+        <div>
+          <div class="svc-name">Pipe Repair &amp; Installation</div>
+          <p class="svc-desc">Burst pipes, leaks, slab leaks, and new plumbing rough-in. Residential and commercial work in copper, PEX, PVC, and all modern materials.</p>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <svg class="service-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M28 8 L48 24 L48 50 L8 50 L8 24 Z" stroke="#60A5FA" stroke-width="2.5" stroke-linejoin="round" fill="#60A5FA" fill-opacity="0.08"/>
+          <rect x="20" y="35" width="16" height="15" rx="1" stroke="#60A5FA" stroke-width="2"/>
+          <rect x="11" y="27" width="10" height="9" rx="1" stroke="#60A5FA" stroke-width="2" fill="#60A5FA" fill-opacity="0.15"/>
+          <rect x="35" y="27" width="10" height="9" rx="1" stroke="#60A5FA" stroke-width="2" fill="#60A5FA" fill-opacity="0.15"/>
+        </svg>
+        <div>
+          <div class="svc-name">Remodeling &amp; New Construction</div>
+          <p class="svc-desc">Kitchen and bathroom remodels, new builds, and additions. We partner with contractors across the Yakima Valley for on-time, code-compliant plumbing.</p>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <svg class="service-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="6" y="16" width="30" height="22" rx="3" stroke="#34D399" stroke-width="2.5" fill="#34D399" fill-opacity="0.08"/>
+          <path d="M36 24 L50 17 L50 38 L36 31 Z" stroke="#34D399" stroke-width="2.5" stroke-linejoin="round" fill="#34D399" fill-opacity="0.1"/>
+          <circle cx="20" cy="27" r="5" stroke="#34D399" stroke-width="2" fill="#34D399" fill-opacity="0.15"/>
+          <circle cx="20" cy="27" r="1.8" fill="#34D399"/>
+        </svg>
+        <div>
+          <div class="svc-name">Video Inspection</div>
+          <p class="svc-desc">Camera inspection of sewer and drain lines to pinpoint blockages, root intrusion, and pipe damage before any excavation work begins.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT — Stats-first (right), photo left -->
+<section class="about" id="about" aria-labelledby="about-heading">
+  <div class="about-inner">
+
+    <div class="about-img-wrap fade-up">
+      <img
+        src="https://shephardplumbingwa.com/wp-content/uploads/2020/10/Plumbing-Yakima-WA-1.jpg.webp"
+        alt="Shephard Plumbing team at work in Yakima, WA"
+        class="about-img"
+        id="aboutImg"
+      >
+      <div class="about-badge">
+        <strong>EST.</strong>
+        2014
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">About Us</div>
+      <h2 class="section-title dark" id="about-heading">BUILT ON TRUST</h2>
+
+      <div class="about-stats">
+        <div>
+          <div class="stat-number" data-count="12" id="stat0">12<span class="stat-suffix">+</span></div>
+          <div class="stat-label">Years in Business</div>
+        </div>
+        <div>
+          <div class="stat-number" data-count="631" id="stat1">631</div>
+          <div class="stat-label">5-Star Reviews</div>
+        </div>
+        <div>
+          <div class="stat-number" data-count="2" id="stat2">2</div>
+          <div class="stat-label">Service Locations</div>
+        </div>
+        <div>
+          <div class="stat-number" data-count="100" id="stat3">100<span class="stat-suffix">%</span></div>
+          <div class="stat-label">Jobs Accepted</div>
+        </div>
+      </div>
+
+      <ul class="about-bullets">
+        <li>
+          <svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          Licensed and insured plumbers serving all of Yakima Valley and Tri-Cities
+        </li>
+        <li>
+          <svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          We take any residential or commercial job, regardless of size
+        </li>
+        <li>
+          <svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          Transparent communication and upfront pricing on every project
+        </li>
+        <li>
+          <svg class="chk" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          HomeAdvisor certified with a 4.8-star reputation across 631+ verified reviews
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS — Bold Poster: 2 oversized pull quotes, NO card grid -->
+<section class="testimonials" id="reviews" aria-labelledby="reviews-heading">
+  <div class="testimonials-inner">
+
+    <div class="section-label fade-up">What Customers Say</div>
+    <h2 class="section-title fade-up" id="reviews-heading">4.8 STARS. 631 REVIEWS.</h2>
+
+    <div class="pull-quotes">
+
+      <div class="pull-quote fade-up">
+        <span class="pq-mark" aria-hidden="true">&ldquo;</span>
+        <p class="pq-text">Best Plumbing Shop in Yakima Valley! Great prices, amazing staff.</p>
+        <p class="pq-author"><span class="stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> Kyris C. &mdash; Google Review</p>
+      </div>
+
+      <div class="pq-divider" aria-hidden="true"></div>
+
+      <div class="pull-quote fade-up">
+        <span class="pq-mark" aria-hidden="true">&ldquo;</span>
+        <p class="pq-text">On time. Called in advance. Very patient while I found the water shut offs at a new to me unit.</p>
+        <p class="pq-author"><span class="stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> Paula L. &mdash; Google Review</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner" role="complementary" aria-label="Service area call to action">
+  <h2>PROUDLY SERVING YAKIMA &amp; TRI-CITIES</h2>
+  <p>Residential and commercial plumbing for the entire Yakima Valley and Tri-Cities region.</p>
+  <a href="tel:5096424108" class="btn-dark">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+    Call (509) 642-4108 Now
+  </a>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact" aria-labelledby="contact-heading">
+  <div class="contact-inner">
+
+    <div>
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title dark" id="contact-heading">LET'S TALK PLUMBING</h2>
+      <a href="tel:5096424108" class="contact-phone" aria-label="Call Shephard Plumbing at 5 0 9 6 4 2 4 1 0 8">(509) 642-4108</a>
+      <p style="font-size:0.88rem;color:var(--text-dm);margin-bottom:1.5rem;">20 S 4th Ave, Yakima, WA 98902</p>
+      <ul class="hours-list">
+        <li><strong>Monday &ndash; Friday</strong><span>8:00 AM &ndash; 4:00 PM</span></li>
+        <li><strong>Saturday</strong><span>Closed</span></li>
+        <li><strong>Sunday</strong><span>Closed</span></li>
+      </ul>
+    </div>
+
+    <div>
+      <form class="contact-form" onsubmit="handleSubmit(event)" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" placeholder="John" autocomplete="given-name" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lname" placeholder="Smith" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cemail">Email</label>
+            <input type="email" id="cemail" name="email" placeholder="john@email.com" autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="cphone">Phone</label>
+            <input type="tel" id="cphone" name="phone" placeholder="(509) 555-0000" autocomplete="tel">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cservice">Service Needed</label>
+          <select id="cservice" name="service">
+            <option value="">Select a service...</option>
+            <option>Water Heater Service</option>
+            <option>Drain Cleaning</option>
+            <option>Sewer Services</option>
+            <option>Pipe Repair &amp; Installation</option>
+            <option>Remodeling &amp; New Construction</option>
+            <option>Video Inspection</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cmessage">Describe the Issue</label>
+          <textarea id="cmessage" name="message" placeholder="Tell us what's going on..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;" id="submitBtn">
+          Send Message
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER — using <ul> not <nav> to avoid inheriting nav styles -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">SHEPHARD PLUMBING, LLC</div>
+      <div class="footer-copy" style="margin-top:0.35rem;">&copy; 2024 Shephard Plumbing, LLC. All rights reserved.</div>
+    </div>
+    <ul class="footer-links" role="list">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:5096424108">(509) 642-4108</a></li>
+    </ul>
+    <div class="footer-copy">
+      Site by <a href="https://media4sight.net" style="color:var(--accent);text-decoration:none;">Foresight Productions</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Logo fallback
+  document.getElementById('navLogoImg').addEventListener('error', function() {
+    this.style.display = 'none';
+    document.getElementById('navLogoFallback').style.display = 'block';
+  });
+
+  // About image fallback
+  document.getElementById('aboutImg').addEventListener('error', function() {
+    this.src = 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=700&h=525&fit=crop&auto=format';
+  });
+
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Hamburger menu
+  const toggle  = document.getElementById('navToggle');
+  const overlay = document.getElementById('navOverlay');
+  const closeBtn = document.getElementById('overlayClose');
+
+  function openMenu() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+  function closeMenu() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    toggle.focus();
+  }
+
+  toggle.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.querySelectorAll('.ol-link').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Close overlay on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu();
+  });
+
+  // IntersectionObserver: fade-up
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
+        fadeObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => fadeObs.observe(el));
+
+  // Count-up animation
+  function animateCount(el, target, hasSuffix, suffixChar, duration) {
+    let current = 0;
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      const val = Math.floor(current);
+      el.textContent = val;
+      if (hasSuffix) {
+        const sup = document.createElement('span');
+        sup.className = 'stat-suffix';
+        sup.textContent = suffixChar;
+        el.appendChild(sup);
+      }
+      if (current >= target) clearInterval(timer);
+    }, 16);
+  }
+
+  const statEls = document.querySelectorAll('.stat-number[data-count]');
+  const statObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.count, 10);
+        const suffix = el.querySelector('.stat-suffix');
+        const hasSuffix = !!suffix;
+        const suffixChar = hasSuffix ? suffix.textContent : '';
+        animateCount(el, target, hasSuffix, suffixChar, 1600);
+        statObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  statEls.forEach(el => statObs.observe(el));
+
+  // Form submission
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Message Sent!';
+    btn.style.background = '#16a34a';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = 'Send Message <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3500);
+  }
+</script>
+
+</body>
+</html>
